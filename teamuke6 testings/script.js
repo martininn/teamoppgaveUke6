@@ -68,7 +68,7 @@ let element = document.getElementById('road');
 //     updateView();
 // }
 
-shop();
+// shop();
 function shop(){
     
     // document.getElementById('road').style.animationPlayState = 'paused';
