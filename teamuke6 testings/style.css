@@ -23,17 +23,18 @@ button{
     overflow-x: hidden;
 }
 
-.road {
+#road {
     height: 200px;
     width: 500%;
     display: block;
-    background-image: url(img/road.png);
+    /* background-image: url(img/road.png); */
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 2;
-    animation: road 5s linear infinite;
+    /* animation: road 5s linear infinite;
+    animation-play-state: running; */
 }
 @keyframes road {
     100%{
@@ -47,4 +48,24 @@ button{
     transform: translateX(-50%);
     position: absolute;
     z-index: 2;
+}
+#shopping{
+    margin-top: 390px;
+    position: absolute;
+    cursor: pointer;
+    width:300px;
+    height: auto;
+    z-index: 1;
+
+}
+#shopDialog{
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 200px;
+    border: 1px solid black;
+    
+}
+#infoDiv{
+    border: 2px solid black;
+    position: absolute;
 }
