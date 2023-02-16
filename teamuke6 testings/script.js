@@ -39,14 +39,16 @@ HTML += /*HTML*/`
             <progress id= "kulhetBar"  value="" min="1" max="100">${v1}</progress>
             <div>Cash: ${cashInPocket} kr</div>
             <div id="shopDialog"></div>
-            <button class="testBtn" onclick="roadStopAnim()">Shop</button>
+            <button class="testBtn" " onclick="roadStopAnim()">Shop</button>
           
             
             <div id="shopping"> </div>
             
             
+            
             <div class="car">
-                <img src="img/car.png" id="showShop">
+                <img onclick="showKompis()" src="img/car.png" id="showShop">
+                <div id="kompisDiv"> </div>
             </div>
         </div>
     `;
@@ -56,17 +58,37 @@ HTML += /*HTML*/`
 
 //controller
 
+function showKompis() {
+    document.querySelector('.running').className = 'stopped';
+    document.getElementById("kompisDiv").innerHTML += `
+    <div class="kompisen">
+        <img id="kompisGif" src="img/kompis2.gif">
+        <select id="greetKompis" onchange="checkAnswers2(this.value)">
+        <option>Hvordan vil du greete kompis?</option>
+        <option value="1">Ja</option>
+        <option value="2">Morn</option>
+        <option value="3">Skjer</option>
+    </div>
+    `;
+}
+updateView();
+
 function roadStopAnim(){
     document.querySelector('.running').className = 'stopped';
     document.getElementById("shopping").innerHTML += ` 
     <div class="butik">
         <img id= "shopping" src="img/shop.png" >
-        <select id="shoping2" class="select"  onchange="checkAnwsers(this.value)"> 
+        <select id="shoping2" class="select" onchange="checkAnwsers(this.value)">
+        <option>Hva ønsker du å kjøpe?</option> 
         <option value= "1"> Caffe </option>
-        <option value= "2"> Tea </option>
+        <option onclick="updateKulhet()" value= "2"> Tea </option>
         <option value= "3"> Ice Cream</option> 
     </div>`;
 
+}
+
+function updateKulhet(){
+    v1 += 5;
 }
 
 function checkAnwsers(){
@@ -74,25 +96,46 @@ function checkAnwsers(){
     let v1= document.getElementById("kulhetBar").value;
 
     if (value==1 && v1<95){
-        alert("Hello!");
+        alert("Hello!" + " " + kaffe + " kr Takk");
+        cashInPocket = cashInPocket - kaffe;
         document.getElementById("kulhetBar").value= v1+=5;
-
     }
-    if (value==2){
+    else if (value==2){
         alert("Hello!" + " " + tea + " kr Takk");
         cashInPocket= cashInPocket - tea;
-        v1 = v1 + 7;
+        document.getElementById("kulhetBar").value= v1 + 7;
     } else if (cashInPocket < tea) {
         alert("Insufficient funds")
+        document.getElementById("kulhetBar").value= v1 - 5;
     }        
-    if (value==3){
+    else if (value==3){
         alert("Hello!" + " " + iceCream + " kr Takk");
         cashInPocket = cashInPocket - iceCream;
+        
     } else if (cashInPocket < iceCream) {
         alert("Insufficient funds!")
     }
     updateView();
 
+    }
+
+    function checkAnswers2(){
+        let value2= document.getElementById('greetKompis').value;
+        let v2 = document.getElementById('kulhetBar').value;
+
+        if (value2==1 && v2<95){
+            alert("Denne funker ikke");
+            document.getElementById("kulhetBar").value= v2+=5;
+    
+        }
+        else if (value2==2){
+            alert("Ja halla ja");
+            v2 = v2 + 7;
+        }         
+       else if (value2==3){
+            alert("Pigg av!"); 
+        } 
+        updateView();
     }
 
 
