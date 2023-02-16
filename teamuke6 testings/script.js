@@ -22,7 +22,15 @@ let kaffe = 35;
 let tea = 45;
 let iceCream = 20;
 
+// let select = document.getElementById("greetKompis");
 let v1 = document.getElementById("kulhetBar");
+
+// let option1 = document.getElementById("optionKompis1");
+// let option2 = document.getElementById("optionKompis2");
+// let option3 = document.getElementById("optionKompis3");
+
+// let v1 = document.getElementById("kulhetBar");
+
 
 
 //view
@@ -33,10 +41,10 @@ HTML += /*HTML*/`
     
       
         <div class="hero">
-            // <div id="road" class="running" style="background:${road}">
+             <div id="road" class="running" style="background:${road}">
                 </div>
             <div>KULHET</div>
-            <progress id= "kulhetBar"  value="" min="1" max="100">${v1}</progress>
+            <progress id= "kulhetBar"  value="0" max="100">${v1}</progress>
             <div>Cash: ${cashInPocket} kr</div>
             <div id="shopDialog"></div>
             <button class="testBtn" " onclick="roadStopAnim()">Shop</button>
@@ -81,32 +89,32 @@ function roadStopAnim(){
         <select id="shoping2" class="select" onchange="checkAnwsers(this.value)">
         <option>Hva ønsker du å kjøpe?</option> 
         <option value= "1"> Caffe </option>
-        <option onclick="updateKulhet()" value= "2"> Tea </option>
+        <option value= "2"> Tea </option>
         <option value= "3"> Ice Cream</option> 
     </div>`;
 
 }
 
-function updateKulhet(){
-    v1 += 5;
-}
+// function updateKulhet(){
+//     v1 += 5;
+// }
 
 function checkAnwsers(){
     let value= document.getElementById("shoping2").value;
-    let v1= document.getElementById("kulhetBar").value;
+    // let v1= document.getElementById("kulhetBar").value;
 
     if (value==1 && v1<95){
         alert("Hello!" + " " + kaffe + " kr Takk");
         cashInPocket = cashInPocket - kaffe;
-        document.getElementById("kulhetBar").value= v1+=5;
+        v1 = v1+=5;
     }
     else if (value==2){
         alert("Hello!" + " " + tea + " kr Takk");
         cashInPocket= cashInPocket - tea;
-        document.getElementById("kulhetBar").value= v1 + 7;
+        v1 = v1 + 7;
     } else if (cashInPocket < tea) {
         alert("Insufficient funds")
-        document.getElementById("kulhetBar").value= v1 - 5;
+        v1 = v1 - 5;
     }        
     else if (value==3){
         alert("Hello!" + " " + iceCream + " kr Takk");
@@ -123,20 +131,37 @@ function checkAnwsers(){
         let value2= document.getElementById('greetKompis').value;
         let v2 = document.getElementById('kulhetBar').value;
 
+        // option1.addEventListener("click", function(){
+        //      const value = parseInt(option1.value);
+        //      if (value===1){
+        //          alert("Denne funker faktisk")
+        //          v1.value += 5;
+        //      } else if (value === 2){
+        //          alert("Ja halla ja")
+        //          v1.value += 7;
+        //      } else if(value === 3) {
+        //          alert(Testings)
+        //         v1.value += 5;
+        //      }
+        //      updateView();
+        //  });
+    
+
         if (value2==1 && v2<95){
-            alert("Denne funker ikke");
+            alert("Ok.");
             document.getElementById("kulhetBar").value= v2+=5;
     
-        }
+          }
         else if (value2==2){
             alert("Ja halla ja");
             v2 = v2 + 7;
-        }         
-       else if (value2==3){
+          }         
+        else if (value2==3){
             alert("Pigg av!"); 
-        } 
-        updateView();
-    }
+          } 
+          updateView();
+        }
+     
 
 
 
@@ -152,30 +177,30 @@ function checkAnwsers(){
     
 // })
 
-store.addEventListener('click', () => {
-    isMoving = !isMoving;
-    if (isMoving == false){
-        document.getElementById('shopping').innerHTML = `
-        <div>
-            <img src="img/shop.png" onclick="shop()" >
-            <select id="shoping2" class="select"  onchange="checkAnwsers(this.value)"> 
-            <option value= "1"> Caffe </option>
-            <option value= "2"> Tea </option>
-            <option value= "3"> Ice Cream</option> 
-        </div>`;
-    }
-}); 
+// store.addEventListener('click', () => {
+//     isMoving = !isMoving;
+//     if (isMoving == false){
+//         document.getElementById('shopping').innerHTML = `
+//         <div>
+//             <img src="img/shop.png" onclick="shop()" >
+//             <select id="shoping2" class="select"  onchange="checkAnwsers(this.value)"> 
+//             <option value= "1"> Caffe </option>
+//             <option value= "2"> Tea </option>
+//             <option value= "3"> Ice Cream</option> 
+//         </div>`;
+//     }
+// }); 
 
-setInterval(() => {
-    if (isMoving) {
-        xPosition++;
-        store.style.left = xPosition + 'px';
+// setInterval(() => {
+//     if (isMoving) {
+//         xPosition++;
+//         store.style.left = xPosition + 'px';
 
-    if (xPosition > window.innerWidth) {
-        xPosition = -100;
-    }
-    }
-}, 10);
+//     if (xPosition > window.innerWidth) {
+//         xPosition = -100;
+//     }
+//     }
+// }, 10);
 
 
 // setInterval(() => {
@@ -194,16 +219,16 @@ setInterval(() => {
 // });
 
 
-let element = document.getElementById('road');
-  let current_margin = 3;
-  setInterval(function(){
-    if(window.innerWidth<=current_margin+100){
-      current_margin = 3;
-    }
-    new_margin = parseInt(current_margin)+1;
-    current_margin = new_margin;
-    element.style.marginLeft = new_margin;
-  },3);
+// let element = document.getElementById('road');
+//   let current_margin = 3;
+//   setInterval(function(){
+//     if(window.innerWidth<=current_margin+100){
+//       current_margin = 3;
+//     }
+//     new_margin = parseInt(current_margin)+1;
+//     current_margin = new_margin;
+//     element.style.marginLeft = new_margin;
+//   },3);
 
 // function startDriving() {
 //     setInterval(function(){

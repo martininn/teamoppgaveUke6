@@ -82,6 +82,16 @@ button{
     animation-play-state: paused;
 }
 
+/*keyframes progressbar
+
+0%
+
+25%
+
+50%
+
+100%*/
+
 #shopping {
     width: 200px;
     height: auto;
