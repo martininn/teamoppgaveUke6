@@ -164,3 +164,8 @@ button{
     padding: .75rem 2rem;
   }
 }
+
+#airplane {
+    position: absolute;
+    margin-left: 10%;
+}

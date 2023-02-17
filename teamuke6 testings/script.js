@@ -48,7 +48,7 @@ HTML += /*HTML*/`
             <div>Cash: ${cashInPocket} kr</div>
             <div id="shopDialog"></div>
             <button class="testBtn" " onclick="roadStopAnim()">Shop</button>
-          
+            <img id="airplane" src="img/airplane-take-off.gif">
             
             <div id="shopping"> </div>
             
